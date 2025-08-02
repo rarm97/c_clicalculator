@@ -3,17 +3,12 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-char prompt_user_input(char * a){
-    printf("Please provide %s\n", a);
-    char input;
-    scanf("%s", &input);
-    return input;
-}
-
-int is_valid_double(const char *str, double *out){
+int get_double(const char *str, double *out){
     char *endptr;
-    // Point to the reference rather than to the varianle
-    *out = strtod(str, &endptr);
+    char buffer[100];
+    printf("%s", str);
+    fgets(buffer, sizeof(buffer), stdin);
+    *out = strtod(buffer, &endptr);
     // Skip whitespace after number
     while (isspace((unsigned char)*endptr)) endptr++;
     // If we didn't consume the whole string, it's not valid
@@ -21,24 +16,16 @@ int is_valid_double(const char *str, double *out){
 }
 
 int main(void) {
-    double a;
-    long b, result;
+    double a, b, result;
     char op; 
-    char input1;
-    input1 = prompt_user_input("your first number");
-    if (input1 < 10 ) {
+    b = 10;
+    result = 15;
+    op = 'f';
+    printf("%f %f %c ", b, result, op);
+    get_double("Please enter your first number: ", &a);
+    printf("%f", a);
+    if (a < 10 ) {
         printf("This isn't going to work anymore, because the number is too small. \n");
     }
-    printf("%s", &input1);
-    printf("Enter first number: ");
-    scanf("%lf", &a);
-    printf("First number i think is, %lf\n", a);
-    b = 2;
-    b++;
-    op = 'i';
-    result = 5;
-    result ++;
-    result = result << 1;
-    printf("a = %lf, b = %ld, op = %c, result = %ld\n", a, b, op, result);
     return 0;
 }
