@@ -13,7 +13,8 @@ float get_double(const char *prompt, double *out){
     char buffer[100];
     printf("%s", prompt);
     fgets(buffer, sizeof(buffer), stdin); // Reads a line of input from the user. 
-    printf("%s read from the user.", buffer);
+    // To run tests in here I would be interested to see what the output of the fgets function is. 
+    // Can i run somewhere in here something that would allow a string to be given rather than specific commands, allowing for not only multiple operation, but for implmentation of BIDMAS and brackets. 
     *out = strtod(buffer, &endptr); // strtod is string to a double. 
     while (isspace((unsigned char)*endptr)) endptr++; // Skip trailing whitespace
     return *endptr == '\0';
@@ -42,6 +43,8 @@ int main(void) {
     get_double("Please enter your second number: ", &b);
     get_operator("Please enter the operator: ", &op);
     switch (op) {
+        // I think that in here having some other funcs could be cool too. 
+        // For example having powers, roots, and engaging properly with brackets. 
         case '*': 
             result = multiplication(a, b);
             break;

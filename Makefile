@@ -3,8 +3,8 @@ CFLAGS = -Wall -Werror
 
 all: calculator scratch 
 
-calculator: main.c 
-	$(CC) $(CFLAGS) main.c -o calculator
+calculator: calculator.c 
+	$(CC) $(CFLAGS) calculator.c -o calculator
 
 scratch: scratch.c
 	$(CC) $(CFLAGS) scratch.c -o scratch
