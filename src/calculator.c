@@ -3,9 +3,9 @@
 #include <stdlib.h> // for functions like strtod (string to double conversion)
 #include <ctype.h> // for isspace
 
-void get_operator(const char *prompt, char *op){
+void get_user_input(const char *prompt, char *userinput){
     printf("%s", prompt);
-    scanf(" %c", op);  // This reads a single character. Skipping whitespace. 
+    fgets(userinput, sizeof(userinput), stdin);
 }
 
 float get_double(const char *prompt, double *out){
@@ -38,10 +38,8 @@ double subtraction(const double a, const double b){
 
 int main(void) {
     double a, b, result;
-    char op;
-    get_double("Please enter your first number: ", &a);
-    get_double("Please enter your second number: ", &b);
-    get_operator("Please enter the operator: ", &op);
+    char user_string;
+    get_user_input("Please enter the operation as a string: ", &user_string);
     switch (op) {
         // I think that in here having some other funcs could be cool too. 
         // For example having powers, roots, and engaging properly with brackets. 
